@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: obs-clientapp
+  name: sellerspot-poc-pos-app
 spec:
   replicas: 1
   selector:
     matchLabels:
       type: frontend
-      service: obs-clientapp
+      service: sellerspot-poc-pos-app
   template:
     metadata:
       labels:
         type: frontend
-        service: obs-clientapp
+        service: sellerspot-poc-pos-app
     spec:
       containers:
         - name: container
-          image: thayalangr/obs-clientapp:production
+          image: thayalangr/sellerspot-poc-pos-app
           imagePullPolicy: Always
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: obs-clientapp
+  name: sellerspot-poc-pos-app
 spec:
   type: NodePort
   ports:
-  - port: 3000
+    - port: 8000
   selector:
     type: frontend
-    service: obs-clientapp
+    service: sellerspot-poc-pos-app

@@ -1,33 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: obs-captainapp
+  name: sellerspot-poc-core-app
 spec:
   replicas: 1
   selector:
     matchLabels:
       type: frontend
-      service: obs-captainapp
+      service: sellerspot-poc-core-app
   template:
     metadata:
       labels:
         type: frontend
-        service: obs-captainapp
+        service: sellerspot-poc-core-app
     spec:
       containers:
         - name: container
-          image: thayalangr/obs-captainapp:production
+          image: thayalangr/sellerspot-poc-core-app
           imagePullPolicy: Always
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: obs-captainapp
+  name: sellerspot-poc-core-app
 spec:
   type: NodePort
   ports:
-  - port: 3000
+    - port: 8000
   selector:
     type: frontend
-    service: obs-captainapp
+    service: sellerspot-poc-core-app

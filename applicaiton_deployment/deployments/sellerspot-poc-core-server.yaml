@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sellerspot-poc-core-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: backend
+      service: sellerspot-poc-core-server
+  template:
+    metadata:
+      labels:
+        type: backend
+        service: sellerspot-poc-core-server
+    spec:
+      containers:
+        - name: container
+          image: thayalangr/sellerspot-poc-core-server
+          imagePullPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sellerspot-poc-core-server
+spec:
+  type: NodePort
+  ports:
+    - port: 5000
+  selector:
+    type: backend
+    service: sellerspot-poc-core-server
