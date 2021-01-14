@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
-  name: letsencrypt-prod-dns
+  name: letsencrypt-production-dns
   namespace: cert-manager
 spec:
   acme:
@@ -11,7 +11,7 @@ spec:
     email: grthayalan18@gmail.com
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
-      name: letsencrypt-prod-dns
+      name: letsencrypt-production-dns
     # Enable the HTTP-01 challenge provider
     solvers:
     - dns01:

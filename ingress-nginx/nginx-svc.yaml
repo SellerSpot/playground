@@ -1,10 +1,10 @@
-# most import steop needs to be done after installing ingress nginx deploy to provision ssl through http01 cert for sni domains otherwise won't work.
+# most important step needs to be done after installing ingress nginx deploy to provision ssl through http01 cert for sni domains otherwise won't work.
 apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: 'true'
-    service.beta.kubernetes.io/do-loadbalancer-hostname: 'store.sellerspotdev.tech'
+    service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: "true"
+    service.beta.kubernetes.io/do-loadbalancer-hostname: "sellerspotdev.tech"
   labels:
     helm.sh/chart: ingress-nginx-3.4.1
     app.kubernetes.io/name: ingress-nginx
